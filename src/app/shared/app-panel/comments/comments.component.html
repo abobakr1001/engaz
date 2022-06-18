@@ -1,0 +1,70 @@
+
+
+
+ <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">add</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">username</th>
+      <th scope="col">email</th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr *ngFor="let item of userInfo">
+     <td>{{item.id}}</td>
+     <td>{{item.name}}</td>
+     <td>{{item.username}}</td>
+     <td>{{item.email}}</td>
+     <td>
+      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editUser(item)">Edit</button>
+
+     </td>
+
+   </tr>
+  </tbody>
+</table>
+
+
+
+
+<!-- Modal edit -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formvalue">
+          <div class="form-group">
+
+            <label for="exampleInputEmail1">name</label>
+            <input type="text" class="form-control" formControlName="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+          </div>
+          <div class="form-group">
+
+            <label for="exampleInputEmail1"> username</label>
+            <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+          </div>
+
+          <div class="form-group">
+
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" *ngIf="!showadd" class="btn btn-primary" (click)="postDetails()">add</button>
+        <button type="button" *ngIf="showabdate" class="btn btn-primary" (click)="editDetails()">edit</button>
+      </div>
+    </div>
+  </div>
+</div>
